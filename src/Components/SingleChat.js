@@ -8,7 +8,7 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import axios from "axios";
+import axios from ".././Services/Instance";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { getSender, getSenderFull } from "../config/ChatLogics";
@@ -53,7 +53,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
       setLoading(true);
 
       const { data } = await axios.get(
-        `${process.env.BACK_URl}/api/message/${selectedChat._id}`,
+        `/api/message/${selectedChat._id}`,
         config
       );
       socket.emit("join chat", selectedChat._id);
@@ -109,7 +109,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
         };
         setNewMessage(" ");
         const { data } = await axios.post(
-          `${process.env.BACK_URl}/api/message/`,
+          `/api/message/`,
           {
             content: newMessage,
             chatId: selectedChat._id,

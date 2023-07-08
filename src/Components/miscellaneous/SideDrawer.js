@@ -29,7 +29,7 @@ import React, { useState } from "react";
 import { ChatState } from "../../Context/ChatProvider";
 import ProfileModal from "./ProfileModal";
 import { useHistory } from "react-router-dom";
-import axios, { Axios } from "axios";
+import axios from "../../Services/Instance";
 import ChatLoading from "./ChatLoading";
 import UserListItem from "../UserAvatar/UserListItem";
 
@@ -51,11 +51,7 @@ const SideDrawer = () => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.post(
-        `${process.env.BACK_URl}/api/chat`,
-        { userId },
-        config
-      );
+      const { data } = await axios.post(`/api/chat`, { userId }, config);
       if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
       setSelectedChat(data);
       setLoadingChat(false);
@@ -89,10 +85,7 @@ const SideDrawer = () => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.get(
-        `${process.env.BACK_URl}/api/user?search=${search}`,
-        config
-      );
+      const { data } = await axios.get(`/api/user?search=${search}`, config);
       setSearchresult(data);
       setLoading(false);
       // console.log(searchResult);

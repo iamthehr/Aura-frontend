@@ -18,7 +18,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import { ChatState } from "../../Context/ChatProvider";
-import axios from "axios";
+import axios from "../../Services/Instance";
 import UserListItem from "../UserAvatar/UserListItem";
 import UserBadgeItem from "../UserAvatar/UserBadgeItem";
 
@@ -65,10 +65,7 @@ function GroupChatModal({ children }) {
         },
       };
 
-      const { data } = await axios.get(
-        `${process.env.BACK_URl}/api/user?search=${search}`,
-        config
-      );
+      const { data } = await axios.get(`/api/user?search=${search}`, config);
 
       setSearchResults(data);
       // console.log(searchResults);
@@ -103,7 +100,7 @@ function GroupChatModal({ children }) {
       };
 
       const { data } = await axios.post(
-        `${process.env.BACK_URl}/api/chat/group`,
+        `/api/chat/group`,
         {
           name: groupChatName,
           users: JSON.stringify(selectedUsers.map((u) => u._id)),

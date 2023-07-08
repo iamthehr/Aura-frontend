@@ -1,6 +1,6 @@
 import { AddIcon } from "@chakra-ui/icons";
 import { Box, Button, Stack, Text, useToast } from "@chakra-ui/react";
-import axios from "axios";
+import axios from "../../Services/Instance";
 import React, { useEffect, useState } from "react";
 import { getSender } from "../../config/ChatLogics";
 import { ChatState } from "../../Context/ChatProvider";
@@ -18,10 +18,7 @@ const MyChat = ({ fetchAgain }) => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.get(
-        `${process.env.BACK_URl}/api/chat`,
-        config
-      );
+      const { data } = await axios.get(`/api/chat`, config);
       // console.log(data);
 
       setChats(data);

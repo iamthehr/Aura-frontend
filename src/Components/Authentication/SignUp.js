@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useToast } from "@chakra-ui/react";
-import axios from "axios";
+import axios from "../../Services/Instance";
 import { useHistory } from "react-router-dom";
 
 function SignUp() {
@@ -102,7 +102,7 @@ function SignUp() {
         },
       };
       const { data } = await axios.post(
-        `${process.env.BACK_URl}/api/user/`,
+        `/api/user/`,
         {
           name,
           email,

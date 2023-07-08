@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useToast } from "@chakra-ui/react";
-import axios from "axios";
+import axios from "../../Services/Instance";
 import { useHistory } from "react-router-dom";
 
 function Login() {
@@ -43,8 +43,9 @@ function Login() {
           "Content-type": "application/json",
         },
       };
+      console.log(process.env);
       const { data } = await axios.post(
-        `${process.env.BACK_URl}/api/user/login`,
+        `/api/user/login`,
         {
           email,
           password,

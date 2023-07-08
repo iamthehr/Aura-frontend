@@ -1,7 +1,6 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "private": true,
   "proxy": "https://aura-backend-00h1.onrender.com/",
   "packageManager": "yarn@3.2.4",
   "dependencies": {

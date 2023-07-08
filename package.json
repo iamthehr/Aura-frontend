@@ -2,7 +2,6 @@
   "name": "frontend",
   "version": "0.1.0",
   "proxy": "https://aura-backend-00h1.onrender.com/",
-  "packageManager": "yarn@3.2.4",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.4.9",

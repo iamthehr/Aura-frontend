@@ -141,7 +141,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         },
       };
       const { data } = await axios.put(
-        `/api/chat/groupremove`,
+        `${process.env.BACK_URl}/api/chat/groupremove`,
         {
           chatId: selectedChat._id,
           userId: user1._id,
@@ -180,7 +180,10 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         },
       };
 
-      const { data } = await axios.get(`/api/user?search=${search}`, config);
+      const { data } = await axios.get(
+        `${process.env.BACK_URl}/api/user?search=${search}`,
+        config
+      );
 
       setSearchResults(data);
       // console.log(searchResults);

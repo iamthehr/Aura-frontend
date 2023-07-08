@@ -102,7 +102,7 @@ function SignUp() {
         },
       };
       const { data } = await axios.post(
-        "/api/user/",
+        `${process.env.BACK_URl}/api/user/`,
         {
           name,
           email,

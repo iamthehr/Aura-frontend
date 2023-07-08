@@ -53,7 +53,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
       setLoading(true);
 
       const { data } = await axios.get(
-        `/api/message/${selectedChat._id}`,
+        `${process.env.BACK_URl}/api/message/${selectedChat._id}`,
         config
       );
       socket.emit("join chat", selectedChat._id);
@@ -109,7 +109,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
         };
         setNewMessage(" ");
         const { data } = await axios.post(
-          "/api/message/",
+          `${process.env.BACK_URl}/api/message/`,
           {
             content: newMessage,
             chatId: selectedChat._id,
